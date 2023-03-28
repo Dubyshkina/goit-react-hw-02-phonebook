@@ -1,30 +1,28 @@
 import { Component } from 'react';
+import s from '../Filter/Filter.module.css';
 
 import PropTypes from 'prop-types';
 
 class Filter extends Component {
-    
-static propTypes = {
-    handleChange: PropTypes.func.isRequired,
-    stat: PropTypes.object.isRequired,
-    contacts: PropTypes.array.isRequired,
-}
-render(){
-    return(
-        <>
+  static propTypes = {
+    handelFilter: PropTypes.func,
+  };
+  render() {
+    return (
+      <>
         <label htmlFor="filter">
-        <input
-              type="text"
-              name="filter"
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              value={this.props.stat.filter}
-              onChange={e => this.props.handleChange(e)}
-              required
-            />
-            </label></>
-    )
-}
-
-
+          <input
+          className={s.input}
+            type="text"
+            name="filter"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            //   value={this.props.filter}
+            onChange={this.props.handelFilter}
+            required
+          />
+        </label>
+      </>
+    );
+  }
 }
 export default Filter;
